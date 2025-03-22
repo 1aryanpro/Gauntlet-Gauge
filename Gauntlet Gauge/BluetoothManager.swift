@@ -112,17 +112,10 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         guard let data = characteristic.value else { return }
 
         if characteristic.uuid == batteryLevelCharacteristicUUID {
-            let batteryLevel = data.first ?? 0
+            let batteryLevel = data.first == 0 ? -1 : Int(data.first!)
             // print("received battery level: \(batteryLevel) for side \(isNextUpdateForRight ? "right" : "left")")
 
-            if batteryLevel != 0 {
-                if isNextUpdateForRight {
-                    batteryLevels[1] = Int(batteryLevel)
-                } else {
-                    batteryLevels[0] = Int(batteryLevel)
-                }
-            }
-
+            batteryLevels[isNextUpdateForRight ? 1 : 0] = batteryLevel
             isNextUpdateForRight.toggle()
         }
     }

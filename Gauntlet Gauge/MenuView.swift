@@ -50,7 +50,7 @@ struct MenuView: View {
 
     var body: some View {
         VStack {
-            Text(title ?? "Gauntet Gauge")
+            Text(title ?? "Gauntlet Gauge")
                 .font(.headline)
                 .padding(.top)
             HStack {
