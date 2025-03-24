@@ -25,6 +25,11 @@ p {
     line-height: 1.6;
 }
 
+.thanks {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .support-links {
     margin-top: 20px;
     text-align: center;
